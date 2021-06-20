@@ -4,6 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/normalize.css">
+    <link rel="stylesheet" href="./styles/main.css">
     <title>Rock-Paper-Scissors</title>
 </head>
 
@@ -11,21 +15,23 @@
 
     <h1>Rock Paper Scissors</h1>
 
-    <div id="selection">
-        <button class="weapon" value="Rock">Rock</button>
-        <button class="weapon" value="Paper">Paper</button>
-        <button class="weapon" value="Scissors">Scissors</button>
+    <h2>Choose your weapon</h2>
+
+    <div id="selection" class="content">
+        <button class="weapon" value="Rock"><img src="./images/rock.png" alt="Rock"></button>
+        <button class="weapon" value="Paper"><img src="./images/paper.png" alt="Paper"></button>
+        <button class="weapon" value="Scissors"><img src="./images/scissors.png" alt="Scissors"></button>
     </div>
-    <br>
-    <div id="result">
+    
+    <div id="result" class="content">
         <span id="player-result">0</span>
-        :
+        &nbsp;:&nbsp;
         <span id="computer-result">0</span>
     </div>
 
-    <div id="result-text" style="white-space: pre-line;"></div>
+    <div id="result-text" class="content" style="white-space: pre-line;"></div>
 
-    <div id="new-game"><button id="play-again" value="play-again" style="display:none">Play again</button></div>
+    <div id="new-game" class="content"><button id="play-again" value="play-again" style="display:none"><img src="./images/reload.png" alt="Reload"></button></div>
     
 
     <script src="./scripts/main.js"></script>

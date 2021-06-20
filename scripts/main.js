@@ -59,7 +59,7 @@ playButtons.forEach(button => {
         updatePlayCounter();
 
         if (winCountComputer == 5){
-            resultText.textContent += "\r\nComputer wins the game, Better luck next time!";
+            resultText.textContent += "\r\nComputer wins the game, better luck next time!";
             newGameButton.style.display = "inline";
             disablePlayButtons(true);
         }
@@ -76,6 +76,7 @@ playButtons.forEach(button => {
 function disablePlayButtons(disabled) {
     playButtons.forEach(button => {
         button.disabled = disabled;
+        button.firstChild.classList.toggle("inactive");
     });
 }
 
