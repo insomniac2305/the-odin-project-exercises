@@ -3,32 +3,29 @@ const defaultGridSize = 60;
 
 const SHADE = "shade";
 const RAINBOW = "rainbow";
-let cellColor = "rgb(0,0,0)";
-
-const enableColorPickerButton = document.querySelector("#enable-color-picker");
-const colorPicker = document.querySelector("#color-picker");
-enableColorPickerButton.style.backgroundColor = cellColor;
-enableColorPickerButton.addEventListener("click", () => colorPicker.click());
-colorPicker.addEventListener("input", () => {
-    cellColor = colorPicker.value;
-    enableColorPickerButton.style.backgroundColor = cellColor;
-});
+let cellColor = "";
 
 const cellCountPicker = document.querySelector("#cell-count-picker");
 const cellCountSpan = document.querySelector("#cell-count");
+const enableColorPickerButton = document.querySelector("#enable-color-picker");
+const colorPicker = document.querySelector("#color-picker");
+const enableShadeButton = document.querySelector("#enable-shade");
+const enableRainbowButton = document.querySelector("#enable-rainbow");
+const resetGridButton = document.querySelector("#reset-grid");
+
+enableColorPickerButton.addEventListener("click", () => colorPicker.click());
+colorPicker.addEventListener("input", () => setCellColor(colorPicker.value));
+enableShadeButton.addEventListener("click", () => setCellColor(SHADE));
+enableRainbowButton.addEventListener("click", () => setCellColor(RAINBOW));
 cellCountPicker.addEventListener("input", () => {
     resetGrid();
-    cellCountSpan.textContent = cellCountPicker.value;
+    cellCountSpan.textContent = `${cellCountPicker.value}x${cellCountPicker.value}`;
 });
-
-const enableShadeButton = document.querySelector("#enable-shade");
-enableShadeButton.addEventListener("click", () => cellColor = SHADE);
-
-const enableRainbowButton = document.querySelector("#enable-rainbow");
-enableRainbowButton.addEventListener("click", () => cellColor = RAINBOW);
-
-const resetGridButton = document.querySelector("#reset-grid");
 resetGridButton.addEventListener("click", () => resetGrid());
+
+setCellColor("rgb(0,0,0)");
+
+
 
 function drawGrid(gridSize, cellCountPerRow) {
 
@@ -72,6 +69,23 @@ function getCellColor(currentCellColor) {
         return getRandomColor();
     } else {
         return cellColor;
+    }
+}
+
+function setCellColor(newCellColor) {
+    cellColor = newCellColor;
+    if(newCellColor == SHADE) {
+        enableShadeButton.classList.add("active");
+        enableRainbowButton.classList.remove("active");
+        enableColorPickerButton.style.backgroundColor = null;
+    } else if(newCellColor == RAINBOW) {
+        enableShadeButton.classList.remove("active");
+        enableRainbowButton.classList.add("active");
+        enableColorPickerButton.style.backgroundColor = null;
+    } else {
+        enableShadeButton.classList.remove("active");
+        enableRainbowButton.classList.remove("active");
+        enableColorPickerButton.style.backgroundColor = newCellColor;
     }
 }
 
