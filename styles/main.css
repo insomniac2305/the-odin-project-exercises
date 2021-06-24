@@ -45,7 +45,7 @@ html, body {
 
 button {
     font-family: inherit;
-    font-size: 32px;
+    font-size: 40px;
     border-radius: 5px;
     color: #fff;
 }
@@ -59,6 +59,7 @@ button {
 }
 
 .operation, #operate {
+    font-size: 56px;
     background-color: rgb(247, 165, 43);
 }
 
