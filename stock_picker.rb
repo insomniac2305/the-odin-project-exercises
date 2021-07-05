@@ -1,6 +1,6 @@
 def stock_picker(prices) 
-  profit = 0   
-  picked_index = [] 
+  profit = 0
+  picked_index = []
   prices.each_with_index do |buy_price, buy_index|
     for sell_index in buy_index+1..prices.length-1 do
       current_profit = prices[sell_index] - buy_price
