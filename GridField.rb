@@ -1,7 +1,12 @@
 class GridField
+
+  FIELD_SIZE = 3
+  CELL_COUNT = FIELD_SIZE**2
+  DIAGONAL_TOP_DOWN = [[0, 0], [1, 1], [2, 2]]
+  DIAGONAL_BOTTOM_UP = [[2, 0], [1, 1], [0, 2]]
   
-  def initialize(size)
-    @content = Array.new(size) {Array.new(size, "")}
+  def initialize()
+    @content = Array.new(FIELD_SIZE) {Array.new(FIELD_SIZE, "")}
   end
 
   def cellIsEmpty?(row, column)
@@ -25,6 +30,33 @@ class GridField
 
     output += "-----------------"
     return output
+  end
+
+  def self.selectionToRow(selection)
+    (selection - 1)/FIELD_SIZE
+  end
+
+  def self.selectionToColumn(selection)
+    (selection - 1)% FIELD_SIZE
+  end
+
+  def self.rowCompleted?(row)
+    @content[row].difference(@content[row][0]).eql?([])
+  end
+
+  def self.columnCompleted?(column)
+    columnToCheck = [@content[0][column], @content[1][column], @content[2][column]]
+    columnToCheck.difference(columnToCheck[0]).eql?([])
+  end
+
+  def self.diagonalBottomUpCompleted?
+    diagonalToCheck = [@content[0][0], @content[1][1], @content[2][2]]
+    diagonalToCheck.difference(diagonalToCheck[0]).eql?([])
+  end
+
+  def self.diagonalTopDownCompleted?
+    diagonalToCheck = [@content[2][0], @content[1][1], @content[0][2]]
+    diagonalToCheck.difference(diagonalToCheck[0]).eql?([])
   end
 
 end
