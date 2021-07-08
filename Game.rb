@@ -1,6 +1,5 @@
 require "./Player.rb"
 require "./GridField.rb"
-require "pry"
 
 class Game
 
@@ -31,33 +30,39 @@ class Game
   def gameOver?(lastSelection)
     row = GridField.selectionToRow(lastSelection)
     column = GridField.selectionToColumn(lastSelection)
-
-    return  GridField.rowCompleted?(row) || 
-            GridField.columnCompleted?(column) ||
-            (GridField::DIAGONAL_TOP_DOWN.include?([row, column]) && GridField.diagonalTopDownCompleted?) ||
-            (GridField::DIAGONAL_BOTTOM_UP.include?([row, column]) && GridField.diagonalBottomUpCompleted?)
+    
+    return  @playingField.rowCompleted?(row) || 
+            @playingField.columnCompleted?(column) ||
+            (GridField::DIAGONAL_TOP_DOWN.include?([row, column]) && @playingField.diagonalTopDownCompleted?) ||
+            (GridField::DIAGONAL_BOTTOM_UP.include?([row, column]) && @playingField.diagonalBottomUpCompleted?)
 
   end
 
   def start
     puts "Ready for Tic Tac Toe?"
+    gameWon = false
+    currentPlayer = [@player1, @player2].shuffle[0]
+    @playingField.clear    
     puts @playingField
-    currentPlayer = @player2
+
     GridField::CELL_COUNT.times do
       currentPlayer = (currentPlayer == @player1 ? @player2 : @player1)
       print "#{currentPlayer.name}, select your field: "
       selection = gets.chomp.to_i
       selection = gets.chomp.to_i until playRound(currentPlayer, selection)
       puts @playingField
+
       if gameOver?(selection)
-        puts ".. and the winner is: #{currentPlayer.name.upcase}!!!"
-        return
+        gameWon = true
+        break
       end
     end
-    print "No winner this time, want to play again? [Y/N]:"
+
+    puts gameWon ? "... and the winner is: #{currentPlayer.name.upcase}!!!" : "No winner this time ..."
+    print "Want to play again? [Y/N]:"
     again = gets.chomp
+    puts "Okay, bye!" if again.upcase[0] == "N"    
     self.start if again.upcase[0] == "Y"
-    puts "Okay, bye!" if again.upcase[0] == "N"
   end
 
 end

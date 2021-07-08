@@ -6,11 +6,11 @@ class GridField
   DIAGONAL_BOTTOM_UP = [[2, 0], [1, 1], [0, 2]]
   
   def initialize()
-    @content = Array.new(FIELD_SIZE) {Array.new(FIELD_SIZE, "")}
+    @content = Array.new(FIELD_SIZE) {Array.new(FIELD_SIZE, " ")}
   end
 
   def cellIsEmpty?(row, column)
-    @content[row][column] === ""
+    @content[row][column] === " "
   end
 
   def setCell(row, column, value)
@@ -24,7 +24,7 @@ class GridField
 
     @content.each do |row|
       output += "|"
-      row.each { |cell| output+= " #{selection += 1}[#{cell.empty? ? ' ' : cell}]" }
+      row.each { |cell| output+= " #{selection += 1}[#{cell}]" }
       output += " |\n"
     end
 
@@ -37,26 +37,30 @@ class GridField
   end
 
   def self.selectionToColumn(selection)
-    (selection - 1)% FIELD_SIZE
+    (selection - 1)%FIELD_SIZE
   end
 
-  def self.rowCompleted?(row)
-    @content[row].difference(@content[row][0]).eql?([])
+  def rowCompleted?(row)
+    @content[row].difference([@content[row][0]]).eql?([])
   end
 
-  def self.columnCompleted?(column)
+  def columnCompleted?(column)
     columnToCheck = [@content[0][column], @content[1][column], @content[2][column]]
-    columnToCheck.difference(columnToCheck[0]).eql?([])
+    columnToCheck.difference([columnToCheck[0]]).eql?([])
   end
 
-  def self.diagonalBottomUpCompleted?
+  def diagonalTopDownCompleted?
     diagonalToCheck = [@content[0][0], @content[1][1], @content[2][2]]
-    diagonalToCheck.difference(diagonalToCheck[0]).eql?([])
+    diagonalToCheck.difference([diagonalToCheck[0]]).eql?([])
+end
+
+  def diagonalBottomUpCompleted?
+    diagonalToCheck = [@content[2][0], @content[1][1], @content[0][2]]
+    diagonalToCheck.difference([diagonalToCheck[0]]).eql?([])
   end
 
-  def self.diagonalTopDownCompleted?
-    diagonalToCheck = [@content[2][0], @content[1][1], @content[0][2]]
-    diagonalToCheck.difference(diagonalToCheck[0]).eql?([])
+  def clear
+    self.initialize
   end
 
 end
