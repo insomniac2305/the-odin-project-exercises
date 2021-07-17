@@ -42,8 +42,8 @@ module Display
     puts ""
   end
   
-  def self.ask_for_guess
-    print "Please type in your guess: "
+  def self.ask_for_code
+    print "Please type in your code: "
   end
 
   def self.code_characters_invalid
