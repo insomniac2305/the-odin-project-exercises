@@ -3,7 +3,11 @@ require "./Code.rb"
 
 class HumanPlayer
 
-  def self.select_code
+  def select_secret_code
+    return select_code
+  end
+
+  def select_code
     code = Code.new
     loop do
 
@@ -24,6 +28,10 @@ class HumanPlayer
 
       return code
     end
+  end
+
+  def process_feedback(guess, feedback)
+    Display.guess_result(guess, feedback)
   end
 
 end
