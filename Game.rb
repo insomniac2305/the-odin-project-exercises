@@ -69,15 +69,19 @@ class Game
   end
 
   def load
-    save_file = File.open("game.sav", "r")
-    save_data = save_file.read    
-    save_game = Marshal.load(save_data)
-    save_file.close
-    
-    @secret = save_game.secret
-    @solution = save_game.solution
-    @guesses = save_game.guesses
-    @remaining_guesses = save_game.remaining_guesses
+    if File.exist?("game.sav")
+      save_file = File.open("game.sav", "r")
+      save_data = save_file.read    
+      save_game = Marshal.load(save_data)
+      save_file.close
+      
+      @secret = save_game.secret
+      @solution = save_game.solution
+      @guesses = save_game.guesses
+      @remaining_guesses = save_game.remaining_guesses
+    else
+      puts "No save file found! Starting new game instead ..."
+    end
   end
 
   public
