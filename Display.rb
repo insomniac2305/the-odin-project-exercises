@@ -90,6 +90,7 @@ class Display
     puts "The computer will randomly select a word and you have to guess it one character at a time to succeed."
     puts "Once the hangman is completed, the computer wins."
     puts "Good luck!\n\n"
+    print "Do you want to start a new game [1] or resume your save [2]?: "
   end
 
   def self.show_guesses(guesses)
