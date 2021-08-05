@@ -92,4 +92,32 @@ module Enumerable
     return count
   end
 
+  def my_map(mapping = nil)
+    return to_enum(:my_map) unless block_given? || mapping
+    result = []
+    self.my_each do |value| 
+      result << (mapping ? mapping.call(value) : yield(value))
+    end
+    return result
+  end
+  
+  def my_inject(initial = nil, sym = nil)
+
+    if initial && !initial.is_a?(Symbol)
+      memo = initial
+      i = 0
+    else
+      memo = self.first
+      i = 1
+    end
+
+    sym = initial if initial.is_a?(Symbol) && !block_given?
+
+    while i < self.length
+      memo = block_given? ? yield(memo, self[i]) : memo.send(sym, self[i])
+      i += 1
+    end
+    return memo
+  end
+
 end
