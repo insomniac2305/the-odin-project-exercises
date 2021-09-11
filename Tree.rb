@@ -10,7 +10,7 @@ class Tree
   end
 
   def build_tree(array)
-    # binding.pry
+    
     return nil if array === nil || array.length == 0
 
     mid = (array.length / 2).to_i
@@ -66,6 +66,36 @@ class Tree
     return find(key, root.right) if key > root.data
   end
 
+  def level_order(root = @root, queue = [])
+    if root
+      print "#{root.data} "
+      queue.push(root.left)
+      queue.push(root.right)
+    end    
+    level_order(queue.shift, queue) unless queue.empty?
+  end
+
+  def inorder(root = @root)
+    return root unless root
+    inorder(root.left)
+    print "#{root.data} "
+    inorder(root.right)
+  end
+  
+  def preorder(root = @root)
+    return root unless root
+    print "#{root.data} "
+    preorder(root.left)
+    preorder(root.right)
+  end
+  
+  def postorder(root = @root)
+    return root unless root
+    postorder(root.left)
+    postorder(root.right)
+    print "#{root.data} "
+  end
+
   def pretty_print(node = @root, prefix = '', is_left = true)
     pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right
     puts "#{prefix}#{is_left ? '└── ' : '┌── '}#{node.data}"
@@ -88,4 +118,11 @@ tree.insert(3)
 tree.insert(6)
 tree.delete(4)
 tree.pretty_print
-p tree.find(67)
+tree.find(67)
+tree.level_order
+puts ""
+tree.inorder
+puts ""
+tree.preorder
+puts ""
+tree.postorder
