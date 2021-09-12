@@ -1,5 +1,4 @@
 require "./Node.rb"
-require "pry"
 
 class Tree
 
@@ -11,8 +10,7 @@ class Tree
 
   private 
 
-  def build_tree(array)
-    
+  def build_tree(array)    
     return nil if array === nil || array.length == 0
 
     mid = (array.length / 2).to_i
@@ -23,22 +21,18 @@ class Tree
     root.right = build_tree(array.slice(mid + 1..array.length))
 
     return root
-
   end
 
   public
 
   def insert(key, root = @root)
-
     return Node.new(key) if root.nil? || root.data == key
     (root.left = insert(key, root.left)) if key < root.data
     (root.right = insert(key, root.right)) if key > root.data
     return root
-
   end
 
   def delete(key, root = @root)
-
     return root unless root
 
     if key < root.data
@@ -50,12 +44,10 @@ class Tree
       return root.left unless root.right
 
       root.data = find_min(root.right)
-
       root.right = delete(root.data, root.right)
     end
 
     return root
-
   end
 
   def find_min(root = @root)
@@ -84,9 +76,9 @@ class Tree
       result.push(root.data)
       queue.push(root.left)
       queue.push(root.right)
-    end    
-    to_level_order_arr(queue.shift, queue, result) unless queue.empty?
+    end
 
+    to_level_order_arr(queue.shift, queue, result) unless queue.empty?
     return result
   end
 
