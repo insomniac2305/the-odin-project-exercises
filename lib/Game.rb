@@ -1,12 +1,14 @@
-require "./Player.rb"
-require "./GridField.rb"
+require_relative "Player"
+require_relative "GridField"
 
 class Game
 
-  def initialize()    
-    @player1 = Player.createNewPlayer(1)
-    @player2 = Player.createNewPlayer(2)
-    @playingField = GridField.new()
+  def initialize(player1 = Player.create_new_player(1),
+                player2 = Player.create_new_player(2),
+                playingField = GridField.new())
+    @player1 = player1
+    @player2 = player2
+    @playingField = playingField
   end
 
   def playRound(player, selection)    
@@ -66,5 +68,3 @@ class Game
   end
 
 end
-
-Game.new.start

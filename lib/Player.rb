@@ -5,7 +5,7 @@ class Player
     @symbol = symbol
   end
 
-  def self.createNewPlayer(number)
+  def self.create_new_player(number)
     print "Please input name of Player #{number}: "    
     while (name = gets.chomp).empty?
       print "Please input name of Player #{number}: "
