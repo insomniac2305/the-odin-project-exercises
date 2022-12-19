@@ -38,27 +38,29 @@
         <div class="form-input-wrapper">
           <div class="form-row">
             <label for="firstname">First Name</label>
-            <input type="text" name="firstname" id="firstname">
+            <input type="text" name="firstname" id="firstname" placeholder="Thor" required>
           </div>
           <div class="form-row">
             <label for="lastname">Last Name</label>
-            <input type="text" name="lastname" id="lastname">
+            <input type="text" name="lastname" id="lastname" placeholder="Odinson">
           </div>
           <div class="form-row">
             <label for="email">E-Mail</label>
-            <input type="email" name="email" id="email">
+            <input type="email" name="email" id="email" placeholder="thundergod@asgard.com" required>
           </div>
           <div class="form-row">
             <label for="phone">Phone Number</label>
-            <input type="tel" name="phone" id="phone">
+            <input type="tel" name="phone" id="phone" placeholder="+49 123 456789">
           </div>
           <div class="form-row">
             <label for="password">Password</label>
-            <input type="password" name="password" id="password">
+            <input type="password" name="password" id="password" placeholder=" " pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" required>
+            <span class="error-message">Password must contain lower case and <br>upper case letters and numbers</span>
           </div>
           <div class="form-row">
             <label for="password-repeat">Confirm Password</label>
-            <input type="password" name="password-repeat" id="password-repeat">
+            <input type="password" name="password-repeat" id="password-repeat" placeholder=" " pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" required>
+            <span class="error-message">Passwords must match</span>
           </div>
         </div>
       </div>
