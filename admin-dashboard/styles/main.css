@@ -229,6 +229,10 @@ html, body {
   box-shadow: var(--box-shadow-default);
 }
 
+.projects > .card {
+  border-left: 10px solid var(--color-sec);
+}
+
 .card,
 .announcement-list,
 .trending-list {
