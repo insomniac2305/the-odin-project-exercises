@@ -23,4 +23,8 @@ header > h1 {
 
 .cell {
   outline: 1px solid #000;
+  font-size: clamp(100px, 30vw, 200px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
