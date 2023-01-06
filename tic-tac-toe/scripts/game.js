@@ -57,10 +57,13 @@ const gameBoard = (() => {
   return { setCell, threeInARow, boardFull };
 })();
 
-const Player = (name) => {
+const Player = (name, token) => {
   const getName = () => name;
+  const getToken = () => token;
 
-  return { getName };
+  const makeMove = (index) => gameBoard.setCell(index, token);
+
+  return { getName, getToken, makeMove };
 };
 
 const gameController = (() => {
