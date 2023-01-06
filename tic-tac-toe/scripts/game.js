@@ -1,3 +1,5 @@
+/* eslint-disable no-use-before-define */
+/* eslint-disable no-alert */
 /* eslint-disable prefer-destructuring */
 const gameBoard = (() => {
   const board = ["", "", "", "", "", "", "", "", ""];
@@ -11,7 +13,7 @@ const gameBoard = (() => {
   };
 
   const cellsEqual = (first, second, third) => {
-    if (first === second && first === third) {
+    if (first !== "" && first === second && first === third) {
       return true;
     }
     return false;
@@ -37,16 +39,15 @@ const gameBoard = (() => {
     if (index % 2 !== 0) {
       return false;
     }
-
     let first = board[0];
     const second = board[4];
     let third = board[8];
-
+    
     if (!cellsEqual(first, second, third)) {
       first = board[2];
       third = board[6];
     }
-
+    
     return cellsEqual(first, second, third);
   };
 
@@ -54,7 +55,7 @@ const gameBoard = (() => {
 
   const boardFull = () => !board.includes("");
 
-  return { setCell, threeInARow, boardFull };
+  return { board, setCell, threeInARow, boardFull };
 })();
 
 const Player = (name, token) => {
@@ -67,11 +68,48 @@ const Player = (name, token) => {
 };
 
 const gameController = (() => {
-  const startGame = () => {
-    while (true) {
-      return true;
-    }
+  let playerOne = Player("One", "❌");
+  let playerTwo = Player("Two", "⭕");
+  let activePlayer = playerOne;
+  const cells = document.querySelectorAll(".cell");
+
+  const addClickEvents = (() => {
+    cells.forEach((cell) => {
+      cell.addEventListener("click", () => playRound(cell));
+    });
+  })();
+
+  const removeClickEvents = () => {
+    cells.forEach((cell) => {
+      cell.removeEventListener("click", playRound);
+    });
   };
 
-  return { startGame };
+  const checkGameOver = (lastChoice) => {
+    if (gameBoard.threeInARow(lastChoice)) {
+      alert(`${activePlayer.getName()} won!`);
+      removeClickEvents();
+      return true;
+    }
+    if (gameBoard.boardFull()) {
+      alert("It's a tie!");
+      removeClickEvents();
+      return true;
+    }
+    return false;
+  };
+
+  const playRound = (choice) => {
+    if (!activePlayer.makeMove(choice.dataset.index)) {
+      alert("Invalid move, try again!");
+      return;
+    }
+    choice.innerText = activePlayer.getToken();
+    if (checkGameOver(choice.dataset.index)) {
+      return;
+    }
+    activePlayer = activePlayer === playerOne ? playerTwo : playerOne;
+  };
+
+  return { activePlayer };
 })();

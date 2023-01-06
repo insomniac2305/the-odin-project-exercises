@@ -23,8 +23,16 @@ header > h1 {
 
 .cell {
   outline: 1px solid #000;
-  font-size: clamp(100px, 30vw, 200px);
+  font-size: clamp(60px, 25vw, 160px);
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.cell:hover:empty {
+  cursor: pointer;
+}
+
+.cell:hover:not(:empty) {
+  cursor: not-allowed;
 }
