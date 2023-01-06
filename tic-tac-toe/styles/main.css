@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root {
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header > h1 {
+  margin: 60px 0 60px 0;
+  font-size: clamp(48px, 5vw, 96px);
+}
+
+.game-board {
+  display: grid;
+  grid-template: repeat(3, minmax(100px, min(200px, 30vw))) / repeat(3, minmax(100px, min(200px, 30vw)));
+  gap: 1px;
+}
+
+.cell {
+  outline: 1px solid #000;
+}
