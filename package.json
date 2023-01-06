@@ -1,0 +1,25 @@
+{
+  "name": "the-odin-project-exercises",
+  "version": "1.0.0",
+  "description": "This repository is a collection of smaller exercises from The Odin Project Curriculum.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/insomniac2305/the-odin-project-exercises.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/insomniac2305/the-odin-project-exercises/issues"
+  },
+  "homepage": "https://github.com/insomniac2305/the-odin-project-exercises#readme",
+  "devDependencies": {
+    "eslint": "^8.31.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0"
+  }
+}
