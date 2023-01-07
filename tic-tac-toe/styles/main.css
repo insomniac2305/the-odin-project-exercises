@@ -37,6 +37,7 @@ header > h1 {
   justify-content: center;
   background-color: #fff;
   user-select: none;
+  transition: background-color ease-in 0.1s;
 }
 
 .cell:nth-child(3),
@@ -69,6 +70,8 @@ header > h1 {
 
 .cell.active:hover:empty {
   cursor: pointer;
+  background-color: #e5e9f3;
+  transition: background-color ease-in 0.1s;
 }
 
 .cell:hover:not(:empty) {
@@ -76,9 +79,9 @@ header > h1 {
 }
 
 .cell:not(.active) {
-  background-color: #b4b4b4;
+  background-color: #d4d4d4;
   border-color: #636363;
-  transition: background-color ease-in 1s;
+  transition: background-color ease-in 0.5s;
 }
 
 .modal {
