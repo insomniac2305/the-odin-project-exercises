@@ -125,8 +125,8 @@ body {
   outline: none;
 }
 
-.form-row input:invalid:not(:placeholder-shown),
-.form-row select:invalid {
+.form-row input:invalid.validate,
+.form-row select:invalid.validate {
   border-color: rgb(255, 50, 50);
 }
 
@@ -134,8 +134,8 @@ body {
   display: none;
 }
 
-input:invalid:not(:placeholder-shown) ~ .error-message,
-select:invalid:not(:placeholder-shown) ~ .error-message {  
+input:invalid.validate ~ .error-message,
+select:invalid.validate ~ .error-message {  
   display: block;
   color: rgb(255, 50, 50);
   font-size: 0.7rem;
