@@ -89,6 +89,8 @@ body {
 
 .form-row {
   margin: 5px 70px 20px 0px;
+  width: 250px;
+  border: none;
 }
 
 .form-row label {
@@ -125,9 +127,18 @@ body {
   outline: none;
 }
 
+label.required::after {
+  content: "*";
+}
+
 .form-row input:invalid.validate,
 .form-row select:invalid.validate {
   border-color: rgb(255, 50, 50);
+}
+
+.form-row input:valid.validate,
+.form-row select:valid.validate {
+  border-color: rgb(30, 160, 30);
 }
 
 .form-row .error-message {
