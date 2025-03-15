@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Index</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #111827;
+      text-align: center;
+      padding: 50px;
+    }
+
+    h1 {
+      color: #d1d5db;
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .card {
+      background-color: transparent;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card a {
+      display: block;
+      padding: 15px;
+      background-color: #0f766e;
+      color: #fff;
+      text-decoration: none;
+      font-size: 20px;
+      text-align: center;
+    }
+
+
+    .card a:hover {
+      background-color: #0c5c56;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>The Odin Project Exercises - Index</h1>
+
+  <div class="grid-container">
+    <div class="card">
+      <img src="admin-dashboard/screenshot.png" alt="Admin Dashboard">
+      <a href="admin-dashboard/index.html">Admin Dashboard</a>
+    </div>
+    <div class="card">
+      <img src="calculator/screenshot.png" alt="Calculator">
+      <a href="calculator/index.html">Calculator</a>
+    </div>
+    <div class="card">
+      <img src="etch-a-sketch/screenshot.png" alt="Etch-a-Sketch">
+      <a href="etch-a-sketch/index.html">Etch-a-Sketch</a>
+    </div>
+    <div class="card">
+      <img src="google-homepage/screenshot.png" alt="Google Homepage Clone">
+      <a href="google-homepage/index.html">Google Homepage Clone</a>
+    </div>
+    <div class="card">
+      <img src="library/screenshot.png" alt="Library">
+      <a href="library/index.html">Library</a>
+    </div>
+    <div class="card">
+      <img src="rock-paper-scissors/screenshot.png" alt="Rock-Paper-Scissors">
+      <a href="rock-paper-scissors/index.html">Rock-Paper-Scissors</a>
+    </div>
+    <div class="card">
+      <img src="sign-up-form/screenshot.png" alt="Sign-up Form">
+      <a href="sign-up-form/index.html">Sign-up Form</a>
+    </div>
+    <div class="card">
+      <img src="tic-tac-toe/screenshot.png" alt="Tic-Tac-Toe">
+      <a href="tic-tac-toe/index.html">Tic-Tac-Toe</a>
+    </div>
+  </div>
+</body>
+
+</html>
